@@ -16,6 +16,7 @@ BuildRequires:	perl-devel
 BuildRequires:	perl-ExtUtils-Depends >= 0.300
 BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
 BuildRequires:	perl-Glib >= %perl_glib_require
+BuildRequires:	pango-devel
 # for test suite:
 #BuildRequires:	fontconfig
 #BuildRequires:	fonts-ttf-dejavu
