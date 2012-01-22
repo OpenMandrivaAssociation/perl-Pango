@@ -1,7 +1,7 @@
 %define module	Pango
 %define	name	perl-%{module}
 %define	version	1.221
-%define	release	%mkrel 7
+%define	release	%mkrel 8
 %define perl_glib_require 1.220
 
 Name:		%{name}
