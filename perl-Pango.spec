@@ -61,10 +61,10 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root)
 %doc AUTHORS LICENSE
-%dir %{perl_vendorarch}/%{module}
+%{perl_vendorarch}/%{module}
 %{perl_vendorarch}/%{module}.pm
-%{perl_vendorarch}/%{module}/*/*.pm
-%{perl_vendorarch}/%{module}/Install
+%exclude %{perl_vendorarch}/%{module}/*.pod
+%exclude %{perl_vendorarch}/%{module}/*/*.pod
 %{perl_vendorarch}/auto/*
 
 %files doc
