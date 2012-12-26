@@ -16,7 +16,6 @@ BuildRequires:	perl(ExtUtils::PkgConfig)
 BuildRequires:	perl(Glib)
 BuildRequires:	perl(Cairo)
 BuildRequires:	pkgconfig(pangocairo)
-BuildRequires:	perl-Cairo
 %if %{with test}
 BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
