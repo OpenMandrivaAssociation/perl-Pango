@@ -13,7 +13,7 @@ URL:		http://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
 BuildRequires:	perl(ExtUtils::Depends)
 BuildRequires:	perl(ExtUtils::PkgConfig)
-BuildRequires;	perl(Glib)
+BuildRequires:	perl(Glib)
 BuildRequires:	perl(Cairo)
 BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	perl-Cairo
