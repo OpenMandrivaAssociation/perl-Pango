@@ -13,11 +13,10 @@ URL:		http://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
 BuildRequires:	perl(ExtUtils::Depends)
 BuildRequires:	perl(ExtUtils::PkgConfig)
+BuildRequires;	perl(Glib)
 BuildRequires:	perl(Cairo)
 BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	perl-Cairo
-# for test suite:
-%bcond_with	test
 %if %{with test}
 BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
