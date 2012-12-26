@@ -1,24 +1,27 @@
-%define	module	Pango
-%define	perl_glib_require 1.220
+%bcond_with	test
 
-Name:		perl-%{module}
+%define	modname	Pango
+
+Name:		perl-%{modname}
 Version:	1.223
-Release:	2
-Summary:	Perl module for the Pango library
+Release:	3
+Summary:	Perl modname for the Pango library
 License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
-Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{module}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{modname}-%{version}.tar.gz
 URL:		http://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
-BuildRequires:	perl-ExtUtils-Depends >= 0.300
-BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
-BuildRequires:	perl-Glib >= %{perl_glib_require}
+BuildRequires:	perl(ExtUtils::Depends)
+BuildRequires:	perl(ExtUtils::PkgConfig)
+BuildRequires:	perl(Cairo)
 BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	perl-Cairo
 # for test suite:
-#BuildRequires:	fontconfig
-#BuildRequires:	fonts-ttf-dejavu
-Requires:	perl-Glib >= %{perl_glib_require}
+%bcond_with	test
+%if %{with test}
+BuildRequires:	fontconfig
+BuildRequires:	fonts-ttf-dejavu
+%endif
 
 %description
 This module provides perl access to the gtk+-2.x library.
@@ -37,35 +40,41 @@ This package contains documentation of the Pango module.
 
 
 %prep
-%setup -q -n %{module}-%{version}
-perl Makefile.PL INSTALLDIRS=vendor
+%setup -qn %{modname}-%{version}
 
 %build
-%make OPTIMIZE="%{optflags}"
+perl Makefile.PL INSTALLDIRS=vendor
+%make
 
+%if %{with test}
 %check
-#xvfb-run %make test
+xvfb-run %make test
+%endif
 
 %install
 %makeinstall_std
 
 %files
 %doc AUTHORS LICENSE
-%{perl_vendorarch}/%{module}
-%{perl_vendorarch}/%{module}.pm
-%exclude %{perl_vendorarch}/%{module}/*.pod
-%exclude %{perl_vendorarch}/%{module}/*/*.pod
+%dir %{perl_vendorarch}/%{modname}
+%{perl_vendorarch}/%{modname}.pm
+%dir %{perl_vendorarch}/%{modname}/Cairo
+%dir %{perl_vendorarch}/%{modname}/Install
+%{perl_vendorarch}/%{modname}/Install/*
 %{perl_vendorarch}/auto/*
 
 %files doc
 %doc examples
 %{_mandir}/*/*
-%dir %{perl_vendorarch}/%{module}
-%{perl_vendorarch}/%{module}/*.pod
-%{perl_vendorarch}/%{module}/*/*.pod
-
+%dir %{perl_vendorarch}/%{modname}
+%{perl_vendorarch}/%{modname}/*.pod
+%{perl_vendorarch}/%{modname}/Cairo/*pod
 
 %changelog
+* Wed Dec 26 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.223-3
+- rebuild for perl-5.16.2
+- cleanups
+
 * Fri Jun 08 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.223-1
 + Revision: 803541
 - cleanups
