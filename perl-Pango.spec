@@ -4,7 +4,7 @@
 
 Name:		perl-%{modname}
 Version:	1.223
-Release:	3
+Release:	4
 Summary:	Perl modname for the Pango library
 License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
