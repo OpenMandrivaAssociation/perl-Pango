@@ -1,24 +1,25 @@
-%bcond_with	test
-%define	modname	Pango
+%define	module	Pango
+%define	perl_glib_require 1.220
+%define upstream_version 1.224
 
-Summary:	Perl modname for the Pango library
-Name:		perl-%{modname}
-Version:	1.223
-Release:	8
-License:	GPLv2 or Artistic
+Name:		perl-%{module}
+Version:	%perl_convert_version %{upstream_version}
+Release:	1
+Summary:	Perl module for the Pango library
+License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
-Url:		http://gtk2-perl.sf.net/
-Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{modname}-%{version}.tar.gz
+Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/1.224/Pango-%{upstream_version}.tar.gz
+URL:		http://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
-BuildRequires:	perl(ExtUtils::Depends)
-BuildRequires:	perl(ExtUtils::PkgConfig)
-BuildRequires:	perl(Glib)
-BuildRequires:	perl(Cairo)
+BuildRequires:	perl-ExtUtils-Depends >= 0.300
+BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
+BuildRequires:	perl-Glib >= %{perl_glib_require}
 BuildRequires:	pkgconfig(pangocairo)
-%if %{with test}
-BuildRequires:	fontconfig
-BuildRequires:	fonts-ttf-dejavu
-%endif
+BuildRequires:	perl-Cairo
+# for test suite:
+#BuildRequires:	fontconfig
+#BuildRequires:	fonts-ttf-dejavu
+Requires:	perl-Glib >= %{perl_glib_require}
 
 %description
 This module provides perl access to the gtk+-2.x library.
@@ -35,34 +36,32 @@ Group:		Books/Computer books
 %description	doc
 This package contains documentation of the Pango module.
 
+
 %prep
-%setup -qn %{modname}-%{version}
+%setup -q -n %{module}-%{upstream_version}
+perl Makefile.PL INSTALLDIRS=vendor
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
-%make
+%make OPTIMIZE="%{optflags}"
 
-%if %{with test}
 %check
-xvfb-run %make test
-%endif
+#xvfb-run %make test
 
 %install
 %makeinstall_std
 
 %files
 %doc AUTHORS LICENSE
-%dir %{perl_vendorarch}/%{modname}
-%{perl_vendorarch}/%{modname}.pm
-%dir %{perl_vendorarch}/%{modname}/Cairo
-%dir %{perl_vendorarch}/%{modname}/Install
-%{perl_vendorarch}/%{modname}/Install/*
+%{perl_vendorarch}/%{module}
+%{perl_vendorarch}/%{module}.pm
+%exclude %{perl_vendorarch}/%{module}/*.pod
+%exclude %{perl_vendorarch}/%{module}/*/*.pod
 %{perl_vendorarch}/auto/*
 
 %files doc
 %doc examples
-%{_mandir}/man3/*
-%dir %{perl_vendorarch}/%{modname}
-%{perl_vendorarch}/%{modname}/*.pod
-%{perl_vendorarch}/%{modname}/Cairo/*pod
+%{_mandir}/*/*
+%dir %{perl_vendorarch}/%{module}
+%{perl_vendorarch}/%{module}/*.pod
+%{perl_vendorarch}/%{module}/*/*.pod
 
