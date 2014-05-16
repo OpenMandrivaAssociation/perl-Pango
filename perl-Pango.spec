@@ -9,6 +9,7 @@ Summary:	Perl module for the Pango library
 License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
 Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/1.224/Pango-%{upstream_version}.tar.gz
+Source1:	perl-Pango.rpmlintrc
 URL:		http://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
 BuildRequires:	perl-ExtUtils-Depends >= 0.300
