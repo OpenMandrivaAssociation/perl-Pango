@@ -1,14 +1,15 @@
 %define	module	Pango
 %define	perl_glib_require 1.220
-%define upstream_version 1.224
+%define upstream_version 1.226
 
 Name:		perl-%{module}
 Version:	%perl_convert_version %{upstream_version}
 Release:	1
 Summary:	Perl module for the Pango library
+
 License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
-Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/1.224/Pango-%{upstream_version}.tar.gz
+Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/%{upstream_version}/Pango-%{upstream_version}.tar.gz
 Source1:	perl-Pango.rpmlintrc
 URL:		http://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
@@ -32,6 +33,7 @@ solution with high quality text handling and graphics rendering.
 
 %package	doc
 Summary:	Pango documentation
+
 Group:		Books/Computer books
 
 %description	doc
@@ -65,4 +67,5 @@ perl Makefile.PL INSTALLDIRS=vendor
 %dir %{perl_vendorarch}/%{module}
 %{perl_vendorarch}/%{module}/*.pod
 %{perl_vendorarch}/%{module}/*/*.pod
+
 
