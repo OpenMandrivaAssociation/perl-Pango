@@ -57,7 +57,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %doc AUTHORS LICENSE
 %{perl_vendorarch}/%{module}
 %{perl_vendorarch}/%{module}.pm
-%dir %{perl_vendorarch}/%{module}/Cairo
 %exclude %{perl_vendorarch}/%{module}/*.pod
 %exclude %{perl_vendorarch}/%{module}/*/*.pod
 %{perl_vendorarch}/auto/*
@@ -65,7 +64,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %files doc
 %doc examples
 %{_mandir}/*/*
-%dir %{perl_vendorarch}/%{module}
 %{perl_vendorarch}/%{module}/*.pod
 %{perl_vendorarch}/%{module}/*/*.pod
 
