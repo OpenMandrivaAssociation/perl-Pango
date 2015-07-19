@@ -4,7 +4,7 @@
 
 Name:		perl-%{module}
 Version:	%perl_convert_version %{upstream_version}
-Release:	32
+Release:	33
 Summary:	Perl module for the Pango library
 
 License:	GPL or Artistic
