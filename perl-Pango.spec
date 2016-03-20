@@ -1,10 +1,10 @@
-%define	module	Pango
+%define	module Pango
 %define	perl_glib_require 1.220
-%define upstream_version 1.226
+%define upstream_version 1.227
 
 Name:		perl-%{module}
 Version:	%perl_convert_version %{upstream_version}
-Release:	35
+Release:	1
 Summary:	Perl module for the Pango library
 
 License:	GPL or Artistic
@@ -31,14 +31,12 @@ internationalization. Pango can be used anywhere that text layout is needed,
 but using Pango in conjunction with Cairo and/or Gtk2 provides a complete
 solution with high quality text handling and graphics rendering.
 
-%package	doc
+%package doc
 Summary:	Pango documentation
-
 Group:		Books/Computer books
 
-%description	doc
+%description doc
 This package contains documentation of the Pango module.
-
 
 %prep
 %setup -q -n %{module}-%{upstream_version}
@@ -66,5 +64,3 @@ perl Makefile.PL INSTALLDIRS=vendor
 %{_mandir}/*/*
 %{perl_vendorarch}/%{module}/*.pod
 %{perl_vendorarch}/%{module}/*/*.pod
-
-
