@@ -1,10 +1,10 @@
-%define	module Pango
-%define	perl_glib_require 1.220
+%define module Pango
+%define perl_glib_require 1.220
 %define upstream_version 1.227
 
 Name:		perl-%{module}
 Version:	%perl_convert_version %{upstream_version}
-Release:	2
+Release:	3
 Summary:	Perl module for the Pango library
 
 License:	GPL or Artistic
@@ -13,11 +13,11 @@ Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/%{upstream_versio
 Source1:	perl-Pango.rpmlintrc
 URL:		http://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
-BuildRequires:	perl-ExtUtils-Depends >= 0.300
-BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
-BuildRequires:	perl-Glib >= %{perl_glib_require}
+BuildRequires:	perl(ExtUtils::Depends) >= 0.300
+BuildRequires:	perl(ExtUtils::PkgConfig) >= 1.03
+BuildRequires:	perl(Glib) >= %{perl_glib_require}
 BuildRequires:	pkgconfig(pangocairo)
-BuildRequires:	perl-Cairo
+BuildRequires:	perl(Cairo)
 # for test suite:
 #BuildRequires:	fontconfig
 #BuildRequires:	fonts-ttf-dejavu
@@ -41,15 +41,17 @@ This package contains documentation of the Pango module.
 %prep
 %setup -q -n %{module}-%{upstream_version}
 perl Makefile.PL INSTALLDIRS=vendor
+# fix build:
+sed -i 's!q(build/doc.pl!q(./build/doc.pl!' Makefile 
 
 %build
-%make OPTIMIZE="%{optflags}"
+%make_build OPTIMIZE="%{optflags}"
 
 %check
-#xvfb-run %make test
+#xvfb-run make test
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc AUTHORS LICENSE
