@@ -47,12 +47,12 @@ This package contains documentation of the Pango module.
 %prep
 %autosetup -n %{module}-%{upstream_version}
 
-perl Makefile.PL INSTALLDIRS=vendor CC=gcc LD=gcc
+perl Makefile.PL INSTALLDIRS=vendor CC=gcc LD=ld
 # fix build:
 sed -i 's!q(build/doc.pl!q(./build/doc.pl!' Makefile 
 
 %build
-%make_build OPTIMIZE="%{optflags} -fno-lto" CC=gcc LD=gcc
+%make_build OPTIMIZE="%{optflags} -fno-lto" CC=gcc LD=ld
 
 %check
 #xvfb-run make test
