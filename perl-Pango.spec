@@ -46,7 +46,7 @@ This package contains documentation of the Pango module.
 
 %prep
 %autosetup -n %{module}-%{upstream_version}
-
+export CC=gcc
 perl Makefile.PL INSTALLDIRS=vendor CC=gcc
 # fix build:
 sed -i 's!q(build/doc.pl!q(./build/doc.pl!' Makefile 
