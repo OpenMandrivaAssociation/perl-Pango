@@ -46,7 +46,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 sed -i 's!q(build/doc.pl!q(./build/doc.pl!' Makefile 
 
 %build
-%make_build OPTIMIZE="%{optflags}"
+%make_build OPTIMIZE="%{optflags} -fno-lto"
 
 %check
 #xvfb-run make test
