@@ -8,7 +8,6 @@ Name:		perl-%{module}
 Version:	%perl_convert_version %{upstream_version}
 Release:	3
 Summary:	Perl module for the Pango library
-
 License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
 Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/%{upstream_version}/Pango-%{upstream_version}.tar.gz
@@ -47,12 +46,12 @@ This package contains documentation of the Pango module.
 %prep
 %autosetup -n %{module}-%{upstream_version}
 
-perl Makefile.PL INSTALLDIRS=vendor CC=gcc LD=ld
+perl Makefile.PL INSTALLDIRS=vendor CC=gcc LD=gcc
 # fix build:
-sed -i 's!q(build/doc.pl!q(./build/doc.pl!' Makefile 
+sed -i 's!q(build/doc.pl!q(./build/doc.pl!' Makefile
 
 %build
-%make_build OPTIMIZE="%{optflags} -fno-lto" CC=gcc LD=ld
+%make_build CC=gcc LD=gcc
 
 %check
 #xvfb-run make test
