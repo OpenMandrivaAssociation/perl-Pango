@@ -1,6 +1,7 @@
 %define module Pango
 %define perl_glib_require 1.220
 %define upstream_version 1.227
+%define _disable_ld_no_undefined 1
 %define _disable_lto 1
 
 Name:		perl-%{module}
