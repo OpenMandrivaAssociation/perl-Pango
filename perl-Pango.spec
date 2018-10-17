@@ -14,16 +14,20 @@ Group:		Development/GNOME and GTK+
 Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/%{upstream_version}/Pango-%{upstream_version}.tar.gz
 Source1:	perl-Pango.rpmlintrc
 URL:		http://gtk2-perl.sf.net/
+Patch0:	Pango-1.226-fix-pangocairo_libs.patch
 BuildRequires:	perl-devel
+BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl(ExtUtils::Depends) >= 0.300
 BuildRequires:	perl(ExtUtils::PkgConfig) >= 1.03
 BuildRequires:	perl(Glib) >= %{perl_glib_require}
+BuildRequires:	perl(File::Spec)
 BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	perl(Cairo)
 # for test suite:
 #BuildRequires:	fontconfig
 #BuildRequires:	fonts-ttf-dejavu
 Requires:	perl-Glib >= %{perl_glib_require}
+Requires:	perl(Cairo)
 
 %description
 This module provides perl access to the gtk+-2.x library.
@@ -41,7 +45,8 @@ Group:		Books/Computer books
 This package contains documentation of the Pango module.
 
 %prep
-%setup -q -n %{module}-%{upstream_version}
+%autosetup -n %{module}-%{upstream_version} -p1
+
 perl Makefile.PL INSTALLDIRS=vendor
 # fix build:
 sed -i 's!q(build/doc.pl!q(./build/doc.pl!' Makefile 
