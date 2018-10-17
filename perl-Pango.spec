@@ -45,7 +45,7 @@ Group:		Books/Computer books
 This package contains documentation of the Pango module.
 
 %prep
-%autosetup -n %{module}-%{upstream_version} -p1
+%autosetup -n %{module}-%{upstream_version} -p0
 
 perl Makefile.PL INSTALLDIRS=vendor
 # fix build:
