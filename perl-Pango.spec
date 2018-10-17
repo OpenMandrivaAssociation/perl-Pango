@@ -14,7 +14,7 @@ Group:		Development/GNOME and GTK+
 Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/%{upstream_version}/Pango-%{upstream_version}.tar.gz
 Source1:	perl-Pango.rpmlintrc
 URL:		http://gtk2-perl.sf.net/
-Patch0:	Pango-1.226-fix-pangocairo_libs.patch
+Patch0:	fix-pangocairo_libs.patch
 BuildRequires:	perl-devel
 BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl(ExtUtils::Depends) >= 0.300
@@ -45,7 +45,7 @@ Group:		Books/Computer books
 This package contains documentation of the Pango module.
 
 %prep
-%autosetup -n %{module}-%{upstream_version} -p0
+%autosetup -n %{module}-%{upstream_version} -p1
 
 perl Makefile.PL INSTALLDIRS=vendor
 # fix build:
