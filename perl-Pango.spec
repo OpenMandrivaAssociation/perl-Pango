@@ -12,7 +12,7 @@ License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
 Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/%{upstream_version}/Pango-%{upstream_version}.tar.gz
 Source1:	perl-Pango.rpmlintrc
-URL:		http://gtk2-perl.sf.net/
+URL:		https://gtk2-perl.sf.net/
 BuildRequires:	perl-devel
 BuildRequires:	perl(ExtUtils::MakeMaker)
 BuildRequires:	perl(ExtUtils::Depends) >= 0.300
