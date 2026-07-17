@@ -23,6 +23,7 @@ BuildRequires:	perl(File::Spec)
 BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	perl(Cairo)
 BuildRequires:	gcc
+BuildRequires:  atomic-devel
 # for test suite:
 #BuildRequires:	fontconfig
 #BuildRequires:	fonts-ttf-dejavu
