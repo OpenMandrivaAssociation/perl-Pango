@@ -5,12 +5,12 @@
 %define _disable_lto 1
 
 Name:		perl-%{module}
-Version:	%perl_convert_version %{upstream_version}
-Release:	9
+Version:	%{upstream_version}
+Release:	10
 Summary:	Perl module for the Pango library
 License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
-Source0:	http://sourceforge.net/projects/gtk2-perl/files/Pango/%{upstream_version}/Pango-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/X/XA/XAOC/Pango-%{upstream_version}.tar.gz
 Source1:	perl-Pango.rpmlintrc
 URL:		https://gtk2-perl.sf.net/
 BuildRequires:	make
